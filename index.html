@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Password Strength Analyzer</h1>
+            <p>Check and enhance your password security</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="password">Enter your password:</label>
+                <div class="password-input-wrapper">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Type your password here..."
+                        autocomplete="off"
+                    >
+                    <button type="button" id="togglePassword" class="toggle-btn">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+            <div class="generator-section">
+                <h3>🎲 Generate Strong Password</h3>
+                <div class="generator-controls">
+                    <div class="length-control">
+                        <label for="passwordLength">Length: <span id="lengthValue">16</span></label>
+                        <input 
+                            type="range" 
+                            id="passwordLength" 
+                            min="8" 
+                            max="32" 
+                            value="16"
+                        >
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="includeUppercase" checked>
+                            Uppercase (A-Z)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeLowercase" checked>
+                            Lowercase (a-z)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeNumbers" checked>
+                            Numbers (0-9)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeSpecial" checked>
+                            Special Characters
+                        </label>
+                    </div>
+                    <button type="button" id="generateBtn" class="generate-btn">
+                        Generate Password
+                    </button>
+                </div>
+                <div class="generated-password" id="generatedPasswordSection" style="display: none;">
+                    <div class="password-display-wrapper">
+                        <input 
+                            type="text" 
+                            id="generatedPassword" 
+                            readonly
+                            class="generated-input"
+                        >
+                        <button type="button" id="copyBtn" class="copy-btn">
+                            📋 Copy
+                        </button>
+                    </div>
+                    <div class="copy-feedback" id="copyFeedback">Copied!</div>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="strength-meter">
+                    <div class="strength-label">Strength Level:</div>
+                    <div class="strength-value" id="strengthValue">-</div>
+                    <div class="score-label">Score: <span id="scoreValue">0</span>/6</div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="checks-grid">
+                    <div class="check-item" id="checkLength">
+                        <span class="check-icon">❌</span>
+                        <span class="check-text">Length (8+ chars)</span>
+                    </div>
+                    <div class="check-item" id="checkUppercase">
+                        <span class="check-icon">❌</span>
+                        <span class="check-text">Uppercase (A-Z)</span>
+                    </div>
+                    <div class="check-item" id="checkLowercase">
+                        <span class="check-icon">❌</span>
+                        <span class="check-text">Lowercase (a-z)</span>
+                    </div>
+                    <div class="check-item" id="checkNumbers">
+                        <span class="check-icon">❌</span>
+                        <span class="check-text">Numbers (0-9)</span>
+                    </div>
+                    <div class="check-item" id="checkSpecial">
+                        <span class="check-icon">❌</span>
+                        <span class="check-text">Special chars</span>
+                    </div>
+                </div>
+
+                <div class="feedback-section">
+                    <h3>Feedback</h3>
+                    <ul id="feedbackList"></ul>
+                </div>
+
+                <div class="suggestions-section" id="suggestionsSection">
+                    <h3>💡 Security Tips</h3>
+                    <ul id="suggestionsList"></ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built for better password security</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
